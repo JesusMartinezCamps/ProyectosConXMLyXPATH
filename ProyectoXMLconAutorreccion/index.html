@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="Practica de Lenguaje de Marcas, una página web con 10 preguntas con corrección automática."/>
+		<link rel='stylesheet' media='screen and (min-width: 701px)' href='css/desktop.css'>
+		<link rel='stylesheet' media='screen and (max-width: 700px)' href='css/mobile.css'>
+		<script src='js/questions.js'></script>
+	</head>
+	<body>
+	<div id="instruccionesIniciales" class="oculto">
+		<p class="presentacion"> Examen sobre conocimientos basicos sobre motos. </p>
+		<p class="presentacion"> - Las preguntas en las que escribes la respuesta solo se aceptan números.</p>
+		<p class="presentacion"> - Las respuestas erroneas no restan, salvo las Checkbox.</p>
+		<p class="presentacion"> - La nota final es sobre 10, cada pregunta vale 1 punto.</p>
+		<p class="presentacion"> Cuando termines haz click en Corregir.</p>
+		<p id="empezar"> Empezar examen </p>
+	</div>
+	<div id="cabecera">
+		<img id="logo" src="img/logo.png">
+		<p id="tituloCabecera">Examen sobre conocimientos básicos de motocicletas</p>
+	</div>
+	<div id="general" class="generalOculto">
+		<form id='myform'>
+
+			<div id="contenedorPregunta1">
+				<h3 id='tituloInput1'></h3>
+				<input id='num' type='number'>
+			</div>
+			<div class="contenedorPregunta">
+				<h3 id='tituloInput2'></h3>
+				<input id='num2' type='number'>
+			</div>
+
+			<div class="contenedorPregunta">
+				<h3 id='tituloSelect1'></h3>
+				<select id='sel'>
+					<option selected value="-1">Selecciona una opción</option>
+				</select>
+			</div>
+			<div class="contenedorPregunta">
+				<h3 id='tituloSelect2'></h3>
+				<select id='sel2'>
+					<option selected value="-1">Selecciona una opción</option>
+				</select>
+			</div>
+
+			<div class="contenedorPreguntaGrande">
+				<h3 id='tituloCheckbox'></h3>
+				<div id='checkboxDiv'></div>
+			</div>
+			<div class="contenedorPreguntaGrande">
+				<h3 id='tituloCheckbox2'></h3>
+				<div id='checkboxDiv2'></div>
+			</div>
+
+			<div class="contenedorPreguntaGrande">
+				<h3 id='tituloMultiple1'></h3>
+				<select multiple id="selectMultiple">
+				</select>
+			</div>
+			<div class="contenedorPreguntaGrande">
+				<h3 id='tituloMultiple2'></h3>
+				<select multiple id="selectMultiple2">
+				</select>
+			</div>
+
+			<div class="contenedorPreguntaGrande">
+				<h3 id='tituloRadio'></h3>
+				<div id='radioDiv'></div>
+			</div>
+			<div class="contenedorPreguntaGrande">
+				<h3 id='tituloRadio2'></h3>
+				<div id='radioDiv2'></div>
+			</div>
+
+			<input id="enviar" type='submit' value='Corregir'>
+		</form>
+
+
+	</div>
+	<div id='resultadosDiv' class="resultadosOculto"></div>
+	</body>
+</html>

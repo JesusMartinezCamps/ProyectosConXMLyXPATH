@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<questions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="questions.xsd">
+    <question id="p1">
+        <type>text</type>
+        <text>En qué año iba a ocurrir el fin del mundo según el calendario Maya</text>
+        <answer>2012</answer>
+    </question>
+    <question id='p2'>
+        <type>text</type>
+        <text>En qué año se realizó el primer vuelo a motor?</text>
+        <answer>1903</answer>
+    </question>
+    <question id='p3'>
+        <type>select</type>
+        <text>¿Cuántas ruedas tiene una motocicleta?</text>
+        <option>4</option>
+        <option>2</option>
+        <option>1</option>
+        <option>5</option>
+        <answer>2</answer>
+    </question>
+    <question id='p4'>
+        <type>select</type>
+        <text>En que año termino la segunda guerra mundial</text>
+        <option>2000</option>
+        <option>1200</option>
+        <option>1945</option>
+        <option>1970</option>
+        <answer>3</answer>
+    </question>
+    <question id="p5">
+        <type>checkbox</type>
+        <text>¿Selecciona los años que no correspondan a la fecha de la primera entrega de Matrix?</text>
+        <option>2000</option>
+        <option>2001</option>
+        <option>1999</option>
+        <option>1998</option>
+        <answer>3</answer>
+        <answer>4</answer>
+    </question>
+    <question id='p6'>
+        <type>checkbox</type>
+        <text>Cuales de estos paises no participaron en la Primera Guerra Mundial</text>
+        <option>Peru</option>
+        <option>China</option>
+        <option>Alemania</option>
+        <option>Italia</option>
+        <answer>3</answer>
+        <answer>4</answer>
+    </question>
+    <question id='p7'>
+        <type>multiple</type>
+        <text>Cuales de las siguientes partes forma parte de una moto</text>
+        <option>Vela</option>
+        <option>Ala</option>
+        <option>Rueda</option>
+        <answer>3</answer>
+    </question>
+    <question id='p8'>
+        <type>multiple</type>
+        <text>¿De qué compañia son las películas Toy Story?</text>
+        <option>Walt Disney Pictures</option>
+        <option>Warners Brothers</option>
+        <option>Dreamworks</option>
+        <answer>1</answer>
+    </question>
+    <question id='p9'>
+        <type>radio</type>
+        <text>Cuantas películas de la Guerra de las Galaxias salieron en el siglo XX</text>
+        <option>Siete</option>
+        <option>Cuatro</option>
+        <option>Tres</option>
+        <option>Ninguna</option>
+        <answer>3</answer>
+    </question>
+    <question id='p10'>
+        <type>radio</type>
+        <text>Noche en el museo: ¿de qué trabajaba Larry Daley?</text>
+        <option>guardia de seguridad</option>
+        <option>estaba desempleado</option>
+        <option>jefe editorial,</option>
+        <option>limpia cristales</option>
+        <answer>1</answer>
+    </question>
+</questions>
