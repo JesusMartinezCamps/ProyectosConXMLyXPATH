@@ -90,18 +90,10 @@ function gestionarXml(dadesXml){
    //SELECT
    //Recuperamos el título y las opciones, guardamos la respuesta correcta
    var tituloSelect1=xmlDoc.getElementsByTagName("text")[2].innerHTML;
-   var opcionesSelect1 = [];
-
-   //Lo nuevo para XPath
-    var xpath="/questions/question[@id='p3']/option";
-    var nodesSelect = xmlDoc.evaluate(xpath, xmlDoc, null, XPathResult.ANY_TYPE, null);
-    //Lo nuevo para XPath
-
+   var xpath="/questions/question[@id='p3']/option";
+   var nodesSelect1 = xmlDoc.evaluate(xpath, xmlDoc, null, XPathResult.ANY_TYPE, null);
    var nopt = xmlDoc.getElementById("p3").getElementsByTagName('option').length;
-    for (i = 0; i < nopt; i++) { 
-      opcionesSelect1[i] = xmlDoc.getElementById("p3").getElementsByTagName('option')[i].innerHTML;
-   }
-   ponerDatosSelectHtml1(tituloSelect1,opcionesSelect1);
+   ponerDatosSelectHtml1(tituloSelect1,noderSelect1);
    respuestaSelect=parseInt(xmlDoc.getElementsByTagName("answer")[2].innerHTML);
 
    var tituloSelect2=xmlDoc.getElementsByTagName("text")[3].innerHTML;
