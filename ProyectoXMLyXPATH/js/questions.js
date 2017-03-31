@@ -528,8 +528,6 @@ function comprobar(){
     if (f.rd2[i].checked) radioSelected2=true;
   }
 
-
-
    if (f.elements[0].value=="") {
     f.elements[0].focus(); 
     alert("Debes introducir una respuesta en la pregunta 1.");
