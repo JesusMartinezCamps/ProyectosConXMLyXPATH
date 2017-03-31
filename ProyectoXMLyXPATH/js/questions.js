@@ -505,7 +505,7 @@ if (notaRadio != 1){
 
 function presentarNota(){
   document.getElementById("general").className="generalOculto";
-  document.getElementById("resultadosDiv").display="block";
+  document.getElementById("resultadosDiv").style.display="block";
 }
 function comprobar(){
    var f=formElement;
