@@ -339,10 +339,7 @@ function corregirText2(){
 //Correccion de Select
 function corregirSelect(){
 var sel = document.getElementById("sel"); 
-if (sel.selectedIndex-1==respuestaSelect) { //Comprueba que se haya introducido una opcion NO default
-  darRespuestaHtml("Debes seleccionar una opción para la pregunta 3");
-  return false
-}else if(sel.selectedIndex-1 ==respuestaSelect){
+if(sel.selectedIndex-1 ==respuestaSelect){
  darRespuestaHtml("Pregunta 3 Correcta: 1 punto");
  nota += 1;
 }else{
@@ -351,10 +348,7 @@ if (sel.selectedIndex-1==respuestaSelect) { //Comprueba que se haya introducido 
 }
 function corregirSelect2(){
 var sel = document.getElementById("sel2"); 
-if (sel.selectedIndex-1==respuestaSelect) { //Comprueba que se haya introducido una opcion NO default
-  darRespuestaHtml("Debes seleccionar una opción para la pregunta 4");
-  return false
-}else if(sel.selectedIndex-1 ==respuestaSelect){
+if(sel.selectedIndex-1 ==respuestaSelect2){
  darRespuestaHtml("Pregunta 4 Correcta: 1 punto");
  nota += 1;
 }else{
