@@ -10,7 +10,7 @@ var respuestasCheckbox = [];
 var respuestasCheckbox2 = [];
 
 var respuestasMultiple = [];
-var respeustasMultiple2 = [];
+var respuestasMultiple2 = [];
 
 var respuestaRadio = null;
 var respuestaRadio2 = null;
@@ -25,23 +25,24 @@ window.onload = function(){
   //CORREGIR al apretar el botón
   formElement=document.getElementById('myform');
   formElement.onsubmit=function(){
-    corregirText();
-    corregirText2();
+    if(comprobar()){
+      corregirText();
+      corregirText2();
 
-    corregirSelect();
-    corregirSelect2();
+      corregirSelect();
+      corregirSelect2();
 
-    corregirCheckbox();
-    corregirCheckbox2();
+      corregirCheckbox();
+      corregirCheckbox2();
 
-    corregirMultiple();
-    corregirMultiple2();
+      corregirMultiple();
+      corregirMultiple2();
 
-    corregirRadio();
-    corregirRadio2();
+      corregirRadio();
+      corregirRadio2();
 
-    presentarNota();
-
+      presentarNota();
+    }
     return false;
   }
    var xhttp = new XMLHttpRequest();
@@ -61,7 +62,7 @@ window.onload = function(){
      xslDoc=this.responseXML;
     }
    };
-   xhttp2.open("GET", "xml/questions.xsl", true);
+   xhttp2.open("GET", "xml/transform.xsl", true);
    xhttp2.send();
 
   function presentacion(){
@@ -92,44 +93,39 @@ function gestionarXml(dadesXml){
    var tituloSelect1=xmlDoc.getElementsByTagName("text")[2].innerHTML;
    var xpath="/questions/question[@id='p3']/option";
    var nodesSelect1 = xmlDoc.evaluate(xpath, xmlDoc, null, XPathResult.ANY_TYPE, null);
-   var nopt = xmlDoc.getElementById("p3").getElementsByTagName('option').length;
-   ponerDatosSelectHtml1(tituloSelect1,noderSelect1);
+
+   ponerDatosSelectHtml1(tituloSelect1,nodesSelect1);
    respuestaSelect=parseInt(xmlDoc.getElementsByTagName("answer")[2].innerHTML);
 
+
    var tituloSelect2=xmlDoc.getElementsByTagName("text")[3].innerHTML;
-   var opcionesSelect2 = [];
-   var nopt = xmlDoc.getElementById("p4").getElementsByTagName('option').length;
-    for (i = 0; i < nopt; i++) { 
-      opcionesSelect2[i] = xmlDoc.getElementById("p4").getElementsByTagName('option')[i].innerHTML;
-   }
-   ponerDatosSelectHtml2(tituloSelect2,opcionesSelect2);
+   var xpath2="/questions/question[@id='p4']/option";
+   var nodesSelect2 = xmlDoc.evaluate(xpath2, xmlDoc, null, XPathResult.ANY_TYPE, null);
+
+   ponerDatosSelectHtml2(tituloSelect2,nodesSelect2);
    respuestaSelect2=parseInt(xmlDoc.getElementsByTagName("answer")[3].innerHTML);
 
- //CHECKBOX
- //Recuperamos el título y las opciones, guardamos las respuestas correctas
- var tituloCheckbox = xmlDoc.getElementsByTagName("text")[4].innerHTML;
- var opcionesCheckbox = [];
- var nopt = xmlDoc.getElementById("p5").getElementsByTagName('option').length;
- for (i = 0; i < nopt; i++) { 
-    opcionesCheckbox[i]=xmlDoc.getElementById("p5").getElementsByTagName('option')[i].innerHTML;
- }  
- ponerDatosCheckboxHtml(tituloCheckbox,opcionesCheckbox);
- var nres = xmlDoc.getElementById("p5").getElementsByTagName('answer').length;
- for (i = 0; i < nres; i++) { 
-  respuestasCheckbox[i]=xmlDoc.getElementById("p5").getElementsByTagName("answer")[i].innerHTML;
- }
+   //CHECKBOX
+   //Recuperamos el título y las opciones, guardamos las respuestas correctas
+   var tituloCheckbox = xmlDoc.getElementsByTagName("text")[4].innerHTML;
+   var xpath="/questions/question[@id='p5']/option";
+   var nodesCheckbox = xmlDoc.evaluate(xpath, xmlDoc, null, XPathResult.ANY_TYPE, null); 
+   ponerDatosCheckboxHtml(tituloCheckbox,nodesCheckbox);
 
- var tituloCheckbox2 = xmlDoc.getElementsByTagName("text")[5].innerHTML;
- var opcionesCheckbox2 = [];
- var nopt = xmlDoc.getElementById("p6").getElementsByTagName('option').length;
- for (i = 0; i < nopt; i++) { 
-    opcionesCheckbox2[i]=xmlDoc.getElementById("p6").getElementsByTagName('option')[i].innerHTML;
- }
- ponerDatosCheckboxHtml2(tituloCheckbox2,opcionesCheckbox2);
- var nres = xmlDoc.getElementById("p6").getElementsByTagName('answer').length;
- for (i = 0; i < nres; i++) { 
-  respuestasCheckbox[i]=xmlDoc.getElementById("p6").getElementsByTagName("answer")[i].innerHTML;
- }
+
+   var nres = xmlDoc.getElementById("p5").getElementsByTagName('answer').length;
+   for (i = 0; i < nres; i++) { 
+    respuestasCheckbox[i]=xmlDoc.getElementById("p5").getElementsByTagName("answer")[i].innerHTML;
+   }
+   var tituloCheckbox2 = xmlDoc.getElementsByTagName("text")[5].innerHTML;
+   var xpath="/questions/question[@id='p6']/option";
+   var nodesCheckbox2 = xmlDoc.evaluate(xpath, xmlDoc, null, XPathResult.ANY_TYPE, null);
+   ponerDatosCheckboxHtml2(tituloCheckbox2,nodesCheckbox2);
+
+   var nres = xmlDoc.getElementById("p6").getElementsByTagName('answer').length;
+   for (i = 0; i < nres; i++) { 
+    respuestasCheckbox2[i]=xmlDoc.getElementById("p6").getElementsByTagName("answer")[i].innerHTML;
+   }
 
   //multiple
   var tituloMultiple = xmlDoc.getElementsByTagName("text")[6].innerHTML;
@@ -207,10 +203,10 @@ function ponerDatosInputHtml(t,pos){
  document.getElementById("tituloInput"+pos).innerHTML = t;
 }
 //datos select
-function ponerDatosSelectHtml1(t,opt){
+function ponerDatosSelectHtml1(t,nodes){
   document.getElementById("tituloSelect1").innerHTML=t;
   var select = document.getElementsByTagName("select")[0];
-  var result = node.iterateNext();
+  var result = nodes.iterateNext();
   i=0;
   while (result) {
    var option = document.createElement("option");
@@ -219,13 +215,13 @@ function ponerDatosSelectHtml1(t,opt){
    i++;
    select.options.add(option);
    result = nodes.iterateNext();
-} 
+  } 
 }
-function ponerDatosSelectHtml2(t,opt){
+function ponerDatosSelectHtml2(t,nodes){
   document.getElementById("tituloSelect2").innerHTML=t;
   var select = document.getElementsByTagName("select")[1];
-  var result = node.iterateNext();
- 
+  var result = nodes.iterateNext();
+  i=0;
   while (result) {
    var option = document.createElement("option");
    option.text = result.innerHTML;
@@ -233,40 +229,47 @@ function ponerDatosSelectHtml2(t,opt){
    i++;
    select.options.add(option);
    result = nodes.iterateNext();
-} 
+  } 
 }
 //datos checkbox
-function ponerDatosCheckboxHtml(t,opt){ 
+function ponerDatosCheckboxHtml(t,nodes){ 
   var checkboxContainer=document.getElementById('checkboxDiv');
   document.getElementById('tituloCheckbox').innerHTML = t;
-  for (i = 0; i < opt.length; i++) { 
-    var input = document.createElement("input");
-    var label = document.createElement("label");
-    label.innerHTML=opt[i];
-    label.setAttribute("for", "color_"+i);
-    input.type="checkbox";
-    input.name="color";
-    input.id="color_"+i;
-    checkboxContainer.appendChild(input);
-    checkboxContainer.appendChild(label);
-    checkboxContainer.appendChild(document.createElement("br"));
-  }  
+  var result = nodes.iterateNext();
+  i=0;
+  while (result) {
+   var input = document.createElement("input");
+   var label = document.createElement("label");   
+   label.innerHTML = result.innerHTML;
+   label.setAttribute("for", "color_"+i);
+   input.type="checkbox";
+   input.name="color";
+   input.id="color_"+i; i++;
+   checkboxContainer.appendChild(input);
+   checkboxContainer.appendChild(label);
+   checkboxContainer.appendChild(document.createElement("br"));
+   result = nodes.iterateNext();
+} 
 }
-function ponerDatosCheckboxHtml2(t,opt){
-  var checkboxContainer2=document.getElementById('checkboxDiv2');
+
+function ponerDatosCheckboxHtml2(t,nodes){
+  var checkboxContainer=document.getElementById('checkboxDiv2');
   document.getElementById('tituloCheckbox2').innerHTML = t;
-  for (i = 0; i < opt.length; i++) { 
-    var input = document.createElement("input");
-    var label = document.createElement("label");
-    label.innerHTML=opt[i];
-    label.setAttribute("for", "color_"+i);
-    input.type="checkbox";
-    input.name="color";
-    input.id="color_"+i; 
-    checkboxContainer2.appendChild(input);
-    checkboxContainer2.appendChild(label);
-    checkboxContainer2.appendChild(document.createElement("br"));
-  }  
+  var result = nodes.iterateNext();
+  i=0;
+  while (result) {
+   var input = document.createElement("input");
+   var label = document.createElement("label");
+   label.innerHTML = result.innerHTML;
+   label.setAttribute("for", "color_"+i);
+   input.type="checkbox";
+   input.name="color2";
+   input.id="color_"+i; i++;
+   checkboxContainer.appendChild(input);
+   checkboxContainer.appendChild(label);
+   checkboxContainer.appendChild(document.createElement("br"));
+   result = nodes.iterateNext();
+} 
 }
 
 
@@ -316,11 +319,7 @@ function darRespuestaHtml(r){
 //Correcciones de Text
 function corregirText(){
   var s = formElement.elements[0].value;
-  if (s.value=="") {
-    s.elements[0].focus();
-    alert("Debes introducir una fecha en la pregunta 1.");
-    return false;
-  }else if (s == respuestaInput){
+  if (s == respuestaInput){
     darRespuestaHtml("Pregunta 1 Correcta: 1 punto.");
     nota +=1;
   }else{
@@ -329,11 +328,7 @@ function corregirText(){
 }
 function corregirText2(){
   var s = formElement.elements[1].value;
-  if (s.elements[1].value=="") {
-    s.elements[1].focus();
-    alert("Debes introducir una fecha en la pregunta 2.");
-    return false;
-  }else if (s == respuestaInput2){
+  if (s == respuestaInput2){
     darRespuestaHtml("Pregunta 2 Correcta: 1 punto.");
     nota +=1;
   }else{
@@ -372,8 +367,8 @@ function corregirCheckbox(){
 var notaCheckbox = 0;
 var f=formElement;
 var esCorrecta = [];
-for (i = 0; i < f.chckbx.length; i++) {  //"chckbx" es el nombre asignado a todos los checkbox
-  if (f.chckbx[i].checked) {
+for (i = 0; i < f.color.length; i++) {  //"chckbx" es el nombre asignado a todos los checkbox
+  if (f.color[i].checked) {
     esCorrecta[i]=false;     
     for (j = 0; j < respuestasCheckbox.length; j++) {
       if (i==respuestasCheckbox[j]) esCorrecta[i]=true;
@@ -397,8 +392,8 @@ function corregirCheckbox2(){
 var notaCheckbox = 0;
 var f=formElement;
 var esCorrecta = [];
-for (i = 0; i < f.chckbx2.length; i++) {  //"chckbx" es el nombre asignado a todos los checkbox
-  if (f.chckbx2[i].checked) {
+for (i = 0; i < f.color.length; i++) {  //"chckbx" es el nombre asignado a todos los checkbox
+  if (f.color[i].checked) {
   esCorrecta[i]=false;     
     for (j = 0; j < respuestasCheckbox2.length; j++) {
       if (i==respuestasCheckbox2[j]) esCorrecta[i]=true;
@@ -512,3 +507,69 @@ function presentarNota(){
   document.getElementById("general").className="generalOculto";
   document.getElementById("resultadosDiv").className="";
 }
+function comprobar(){
+   var f=formElement;
+   var checked=false;
+   var checked2=false;
+    var radioSelected = false;
+    var radioSelected2 = false;
+
+  for (i = 0; i < f.color.length; i++) {
+      if (f.color[i].checked) checked=true;
+  }
+  for (i = 0; i < f.color2.length; i++){
+    if(f.color2[i].checked) checked2=true;
+  }
+
+  for (i = 0; i < f.rd.length; i++) {
+    if (f.rd[i].checked) radioSelected=true;
+  } 
+  for (i = 0; i < f.rd2.length; i++) {
+    if (f.rd2[i].checked) radioSelected2=true;
+  }
+
+
+
+   if (f.elements[0].value=="") {
+    f.elements[0].focus(); 
+    alert("Debes introducir una respuesta en la pregunta 1.");
+    return false;
+   }else if (f.elements[1].value=="") {
+    f.elements[1].focus(); 
+    alert("Debes introducir una respuesta en la pregunta 2.");
+    return false;
+    }else if (f.elements[2].selectedIndex==0) {
+    f.elements[2].focus();
+    alert("Selecciona una opción en la pregunta 3");
+    return false;
+   }else if (f.elements[3].selectedIndex==0) {
+    f.elements[3].focus();
+    alert("Selecciona una opción en la pregunta 4");
+    return false;
+   } else if (!checked) {    
+    document.getElementsByTagName("h3")[4].scrollIntoView();
+    alert("Selecciona una opción en la pregunta 5");
+    return false;
+   }else if (!checked2) {    
+    document.getElementsByTagName("h3")[5].scrollIntoView();
+    alert("Selecciona una opción en la pregunta 6");
+    return false;
+   }else if (document.getElementById("selectMultiple").selectedIndex == -1){
+    alert("Selecciona una opción en la pregunta 7");
+    document.getElementById("tituloMultiple1").scrollIntoView();
+    return false;
+  }else if (document.getElementById("selectMultiple2").selectedIndex == -1){
+    alert("Selecciona una opción en la pregunta 8");
+    document.getElementById("tituloMultiple2").scrollIntoView();
+    return false;
+  }else if (!radioSelected) { 
+    document.getElementById("tituloRadio").scrollIntoView();
+    alert("Selecciona una opción en pregunta 9");
+    return false;
+  }else if (!radioSelected2) { 
+    document.getElementById("tituloRadio2").scrollIntoView();
+    alert("Selecciona una opción en pregunta 10");
+    return false;
+  }else return true;
+  
+ }
