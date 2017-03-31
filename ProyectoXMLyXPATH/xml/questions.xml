@@ -26,7 +26,7 @@
         <option>A1</option>
         <option>A</option>
         <option>A2</option>
-        <answer>3</answer>
+        <answer>2</answer>
     </question>
     <question id="p5">
         <type>checkbox</type>
@@ -35,8 +35,8 @@
         <option>Hosquilla de tipo Girder</option>
         <option>Horquilla de tipo Hossack</option>
         <option>Horquilla invertida</option>
-        <answer>1</answer>
-        <answer>4</answer>
+        <answer>0</answer>
+        <answer>3</answer>
     </question>
     <question id='p6'>
         <type>checkbox</type>
@@ -45,8 +45,8 @@
         <option>De tambor</option>
         <option>Por cardan</option>
         <option>De tipo martillo</option>
+        <answer>0</answer>
         <answer>1</answer>
-        <answer>2</answer>
     </question>
     <question id='p7'>
         <type>multiple</type>
@@ -55,8 +55,8 @@
         <option>Yamaha XJ6.</option>
         <option>Suzuki Marauder 250.</option>
         <option>Yamaha YBR125.</option>
+        <answer>1</answer>
         <answer>2</answer>
-        <answer>3</answer>
     </question>
     <question id='p8'>
         <type>multiple</type>
@@ -65,8 +65,8 @@
         <option>Madrid.</option>
         <option>Valencia.</option>
         <option>Pamplona.</option>
+        <answer>0</answer>
         <answer>1</answer>
-        <answer>2</answer>
     </question>
     <question id='p9'>
         <type>radio</type>
@@ -75,7 +75,7 @@
         <option>Girar el manillar en el mismo sentido que la curva.</option>
         <option>No mover tu cuerpo y girar solo con el manillar.</option>
         <option>Ninguna de las anteriores, esa técnica no existe.</option>
-        <answer>1</answer>
+        <answer>0</answer>
     </question>
     <question id='p10'>
         <type>radio</type>
@@ -84,6 +84,6 @@
         <option>Sí, pero solo para llamas y nunca si se escucha música</option>
         <option>No, en ninún caso.</option>
         <option>Sí, en cualquier caso.</option>
-        <answer>4</answer>
+        <answer>3</answer>
     </question>
 </questions>
